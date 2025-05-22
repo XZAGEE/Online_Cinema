@@ -1,9 +1,13 @@
 
+// src/services/BookingService.js
 const BookingService = {
   saveBooking(movieId, bookingData) {
     const bookings = this.getBookings(movieId) || [];
-    bookings.push(bookingData);
+    const bookingId = Date.now().toString();
+    const newBooking = { ...bookingData, bookingId };
+    bookings.push(newBooking);
     localStorage.setItem(`bookings_${movieId}`, JSON.stringify(bookings));
+    return bookingId;
   },
 
   getBookings(movieId) {
@@ -18,6 +22,11 @@ const BookingService = {
       booking.seats.forEach((seat) => bookedSeats.add(seat))
     );
     return Array.from(bookedSeats);
+  },
+
+  isSeatBooked(movieId, seatId) {
+    const bookedSeats = this.getBookedSeats(movieId);
+    return bookedSeats.includes(seatId);
   },
 };
 

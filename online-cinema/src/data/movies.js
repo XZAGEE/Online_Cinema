@@ -28,6 +28,24 @@ const movies = [
     time: '18:00',
     poster: 'https://i.pinimg.com/736x/ea/a2/6e/eaa26e2c3bfa234c3cdd3c4d9fabad35.jpg',
   },
+  {
+    id: 4,
+    title: 'Джокер',
+    description: 'Історія походження одного з найвідоміших суперлиходіїв у світі коміксів.',
+    genre: 'Бойовик',
+    date: '2025-06-03',
+    time: '20:00',
+    poster: 'https://i.pinimg.com/736x/29/7c/00/297c004df1f0b482520f1fcf612638fa.jpg',
+  },
+  {
+    id: 5,
+    title: 'Формула 1: В гонитві за швидкістю',
+    description: 'Документальний фільм про світ Формули 1 та її найкращих гонщиків.',
+    genre: 'Спорт',
+    date: '2025-06-03',
+    time: '19:00',
+    poster: 'https://i.pinimg.com/736x/e1/25/5a/e1255af57ca76f76276de1f9c3f9cd30.jpg',
+  },
 ];
 
 export default movies;

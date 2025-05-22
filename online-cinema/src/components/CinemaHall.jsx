@@ -1,4 +1,5 @@
 
+// src/components/CinemaHall.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BookingService from '../services/BookingService';
@@ -21,13 +22,15 @@ const CinemaHall = () => {
 
   const toggleSeat = (row, seat) => {
     const seatId = `${row}-${seat}`;
-    if (!bookedSeats.includes(seatId)) {
-      setSelectedSeats((prev) =>
-        prev.includes(seatId)
-          ? prev.filter((id) => id !== seatId)
-          : [...prev, seatId]
-      );
+    if (BookingService.isSeatBooked(id, seatId)) {
+      toast.error(`Місце ${seatId} вже заброньовано!`);
+      return;
     }
+    setSelectedSeats((prev) =>
+      prev.includes(seatId)
+        ? prev.filter((id) => id !== seatId)
+        : [...prev, seatId]
+    );
   };
 
   const validateForm = () => {
@@ -63,7 +66,7 @@ const CinemaHall = () => {
       setBookedSeats(BookingService.getBookedSeats(id));
       toast.success('Бронювання успішно збережено!');
     } else {
-      toast.error('Заповніть усі поля коректно!');
+      toast.error('Заповніть усі поля коректно або виберіть місця!');
     }
   };
 
@@ -100,7 +103,7 @@ const CinemaHall = () => {
       <div className="seats-grid">{renderSeats()}</div>
       <div className="booking-form">
         <h3>Введіть дані для бронювання</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <div>
             <input
               type="text"
