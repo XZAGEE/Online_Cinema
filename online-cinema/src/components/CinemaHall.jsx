@@ -14,10 +14,15 @@ const CinemaHall = () => {
   const [bookedSeats, setBookedSeats] = useState([]);
   const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const seats = BookingService.getBookedSeats(id);
-    setBookedSeats(seats);
+    const fetchBookedSeats = () => {
+      const seats = BookingService.getBookedSeats(id);
+      setBookedSeats(seats);
+      setLoading(false);
+    };
+    fetchBookedSeats();
   }, [id]);
 
   const toggleSeat = (row, seat) => {
@@ -74,7 +79,7 @@ const CinemaHall = () => {
     const seats = [];
     for (let row = 1; row <= rows; row++) {
       const rowSeats = [];
-      for (let seat = 1; seat <= seatsPerRow-1; seat++) {
+      for (let seat = 1; seat <= seatsPerRow; seat++) {
         const seatId = `${row}-${seat}`;
         rowSeats.push(
           <div
@@ -100,15 +105,19 @@ const CinemaHall = () => {
   return (
     <div className="cinema-hall">
       <h2>Вибір місць</h2>
-      <div className="seats-grid">{renderSeats()}</div>
+      {loading ? (
+        <div className="loading">Завантаження...</div>
+      ) : (
+        <div className="seats-grid">{renderSeats()}</div>
+      )}
       <div className="booking-form">
         <h3>Введіть дані для бронювання</h3>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div>
             <input
               type="text"
               name="name"
-              placeholder="Ім’я"
+              placeholder="Введіть ваше ім’я"
               value={formData.name}
               onChange={handleChange}
             />
@@ -118,7 +127,7 @@ const CinemaHall = () => {
             <input
               type="text"
               name="phone"
-              placeholder="Телефон"
+              placeholder="Введіть ваш телефон"
               value={formData.phone}
               onChange={handleChange}
             />
@@ -128,7 +137,7 @@ const CinemaHall = () => {
             <input
               type="email"
               name="email"
-              placeholder="Емейл"
+              placeholder="Введіть ваш емейл"
               value={formData.email}
               onChange={handleChange}
             />
