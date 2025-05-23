@@ -46,6 +46,24 @@ const movies = [
     time: '19:00',
     poster: 'https://i.pinimg.com/736x/e1/25/5a/e1255af57ca76f76276de1f9c3f9cd30.jpg',
   },
+  {
+    id: 6,
+    title: 'Король джунглів',
+    description: 'Пригоди Тарзана в джунглях Африки.',
+    genre: 'Пригода',
+    date: '2025-06-03',
+    time: '19:00',
+    poster: 'https://i.pinimg.com/736x/e1/25/5a/e1255af57ca76f76276de1f9c3f9cd30.jpg',
+  },
+  {
+    id: 7,
+    title: 'Зоряні війни: Пробудження сили',
+    description: 'Нові герої та старі знайомі обличчя в новій епосі Зоряних війн.',
+    genre: 'Фантастика',
+    date: '2025-06-03',
+    time: '19:00',
+    poster: 'https://i.pinimg.com/736x/e1/25/5a/e1255af57ca76f76276de1f9c3f9cd30.jpg',
+  },
 ];
 export default movies;
 
