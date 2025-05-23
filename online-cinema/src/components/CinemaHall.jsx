@@ -105,19 +105,15 @@ const CinemaHall = () => {
   return (
     <div className="cinema-hall">
       <h2>Вибір місць</h2>
-      {loading ? (
-        <div className="loading">Завантаження...</div>
-      ) : (
-        <div className="seats-grid">{renderSeats()}</div>
-      )}
+      <div className="seats-grid">{renderSeats()}</div>
       <div className="booking-form">
         <h3>Введіть дані для бронювання</h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} >
           <div>
             <input
               type="text"
               name="name"
-              placeholder="Введіть ваше ім’я"
+              placeholder="Ім’я"
               value={formData.name}
               onChange={handleChange}
             />
@@ -127,7 +123,7 @@ const CinemaHall = () => {
             <input
               type="text"
               name="phone"
-              placeholder="Введіть ваш телефон"
+              placeholder="Телефон"
               value={formData.phone}
               onChange={handleChange}
             />
@@ -137,7 +133,7 @@ const CinemaHall = () => {
             <input
               type="email"
               name="email"
-              placeholder="Введіть ваш емейл"
+              placeholder="Емейл"
               value={formData.email}
               onChange={handleChange}
             />
@@ -152,3 +148,4 @@ const CinemaHall = () => {
 };
 
 export default CinemaHall;
+

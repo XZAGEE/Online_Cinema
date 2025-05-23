@@ -47,5 +47,5 @@ const movies = [
     poster: 'https://i.pinimg.com/736x/e1/25/5a/e1255af57ca76f76276de1f9c3f9cd30.jpg',
   },
 ];
-
 export default movies;
+
